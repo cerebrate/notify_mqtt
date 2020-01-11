@@ -1,0 +1,17 @@
+# Describes the format for available notification services
+
+notify_mqtt:
+  description: Send a notification via MQTT. Fields are converted into matching fields in a JSON object sent as a string to the configured topic.
+  fields:
+    message:
+      description: Message body of the notification.
+      example: The garage door has been open for 10 minutes.
+    title:
+      description: Optional title for your notification.
+      example: 'Your Garage Door Friend'
+    target:
+      description: An array of targets to send the notification to. Optional depending on the platform.
+      example: platform specific
+    data:
+      description: Extended information for notification. Optional depending on the platform.
+      example: platform specific
