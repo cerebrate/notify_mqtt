@@ -1,5 +1,7 @@
 # MQTT notification service for Home Assistant.
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+
 The `notify_mqtt` notification platform allows you to publish notifications from Home Assistant to an MQTT topic. This is primarily intended to help those who have an existing notification infrastructure set up in [Node-RED](https://nodered.org/) or another MQTT-friendly tool, but may find other uses.
 
 To enable the `notify_mqtt` notification platform in your installation, add the following to your `configuration.yaml` file:
