@@ -1,6 +1,7 @@
 {
   "domain": "notify_mqtt",
   "name": "Notify MQTT",
+  "version": "0.1.0",
   "documentation": "",
   "requirements": [],
   "dependencies": ["mqtt"],

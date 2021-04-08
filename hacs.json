@@ -2,5 +2,4 @@
   "name": "MQTT Notification Service",
   "render_readme": true,
   "homeassistant": "0.103",
-  "version": "0.1"
 }
