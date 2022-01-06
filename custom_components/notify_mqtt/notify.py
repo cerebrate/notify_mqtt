@@ -52,4 +52,4 @@ class MqttNotificationService(BaseNotificationService):
             dto.update(data)
 
         topic_message = json.dumps(dto)
-        self.hass.components.mqtt.publish(self.topic, topic_message)
+        self.hass.components.mqtt.publish(self.hass, self.topic, topic_message)
