@@ -4,7 +4,7 @@
 
 This is a Home Assistant custom component that bridges HA's notification system to MQTT. When a notification is sent via this platform, it serializes the payload to JSON and publishes it to a configured MQTT topic — enabling consumption by Node-RED or any MQTT-aware system.
 
-Distributed via [HACS](https://hacs.xyz/). Minimum supported Home Assistant version: 0.103.
+Distributed via [HACS](https://hacs.xyz/). Minimum supported Home Assistant version: 2023.4.0.
 
 ## Architecture
 
