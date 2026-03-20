@@ -1,8 +1,6 @@
 """The Notify MQTT integration."""
 from __future__ import annotations
 
-from typing import Any
-
 from homeassistant.components import mqtt
 from homeassistant.components.notify import ATTR_MESSAGE, ATTR_TITLE
 from homeassistant.config_entries import ConfigEntry
@@ -12,7 +10,7 @@ from homeassistant.exceptions import ServiceValidationError
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 
-from .const import CONF_TOPIC, DOMAIN
+from .const import DOMAIN
 
 PLATFORMS = [Platform.NOTIFY]
 

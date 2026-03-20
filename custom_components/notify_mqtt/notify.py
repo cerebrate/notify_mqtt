@@ -65,6 +65,7 @@ class MqttNotificationService(BaseNotificationService):
     async def async_send_message(self, message: str = "", **kwargs: Any) -> None:
         """Publish a notification as a JSON string to the MQTT topic."""
         payload = _build_payload(message, kwargs.get(ATTR_TITLE), kwargs.get(ATTR_TARGET), kwargs.get(ATTR_DATA))
+        _LOGGER.debug("Publishing notification to %s: %s", self.topic, payload)
         await mqtt.async_publish(self.hass, self.topic, payload)
 
 
@@ -110,6 +111,7 @@ class MqttNotifyEntity(NotifyEntity):
     async def async_send_message(self, message: str, title: str | None = None) -> None:
         """Publish a notification to the configured MQTT topic."""
         payload = _build_payload(message, title)
+        _LOGGER.debug("Publishing notification to %s: %s", self._topic, payload)
         await mqtt.async_publish(self.hass, self._topic, payload)
 
     @property

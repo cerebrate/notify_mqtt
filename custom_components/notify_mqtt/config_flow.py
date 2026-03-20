@@ -94,13 +94,26 @@ class NotifyMqttOptionsFlow(OptionsFlow):
         if user_input is not None:
             errors = _validate_topic(user_input)
             if not errors:
+                new_topic: str = user_input[CONF_TOPIC]
+                # Check for duplicate topic across other config entries.
+                if new_topic != current_topic:
+                    for entry in self.hass.config_entries.async_entries(DOMAIN):
+                        if entry.entry_id != self._entry.entry_id and entry.unique_id == new_topic:
+                            errors[CONF_TOPIC] = "already_configured"
+                            break
+            if not errors:
                 # Strip empty name so it doesn't shadow the topic fallback.
-                cleaned = {CONF_TOPIC: user_input[CONF_TOPIC]}
+                cleaned = {CONF_TOPIC: new_topic}
                 name = (user_input.get(CONF_NAME) or "").strip()
                 if name:
                     cleaned[CONF_NAME] = name
+                # Keep unique_id in sync with the topic.
+                if new_topic != current_topic:
+                    self.hass.config_entries.async_update_entry(
+                        self._entry, unique_id=new_topic
+                    )
                 return self.async_create_entry(
-                    title=name or cleaned[CONF_TOPIC],
+                    title=name or new_topic,
                     data=cleaned,
                 )
 
