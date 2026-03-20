@@ -1,0 +1,44 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up MQTT Notification",
+        "description": "Enter the MQTT topic to publish notifications to. You can add multiple entries for different topics.",
+        "data": {
+          "topic": "MQTT topic",
+          "name": "Friendly name"
+        },
+        "data_description": {
+          "topic": "The MQTT topic to publish JSON notification payloads to (e.g. home/notifications/alerts).",
+          "name": "Optional display name for this notifier. If left blank, the topic is used as the name."
+        }
+      }
+    },
+    "error": {
+      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or +).",
+      "already_configured": "This MQTT topic is already configured."
+    },
+    "abort": {
+      "already_configured": "This MQTT topic is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update MQTT Notification",
+        "data": {
+          "topic": "MQTT topic",
+          "name": "Friendly name"
+        },
+        "data_description": {
+          "topic": "The MQTT topic to publish JSON notification payloads to.",
+          "name": "Optional display name. If left blank, the topic is used as the name."
+        }
+      }
+    },
+    "error": {
+      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or +).",
+      "already_configured": "This MQTT topic is already configured."
+    }
+  }
+}
