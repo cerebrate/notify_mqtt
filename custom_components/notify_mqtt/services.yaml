@@ -1,6 +1,6 @@
 # Describes the format for available notification services
 
-notify_mqtt:
+publish:
   description: >
     Send a notification via MQTT with full payload control.
     All fields are serialized into a JSON object published to the
