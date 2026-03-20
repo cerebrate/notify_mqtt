@@ -4,7 +4,7 @@
 
 This is a Home Assistant custom component that bridges HA's notification system to MQTT. When a notification is sent via this platform, it serializes the payload to JSON and publishes it to a configured MQTT topic — enabling consumption by Node-RED or any MQTT-aware system.
 
-Distributed via [HACS](https://hacs.xyz/). Minimum supported Home Assistant version: 0.103.
+Distributed via [HACS](https://hacs.xyz/). Minimum supported Home Assistant version: 2023.4.0.
 
 ## Architecture
 
@@ -49,7 +49,7 @@ configuration.yaml: notify: platform: notify_mqtt
 ### Config-entry path (new)
 - `MqttNotifyEntity` inherits from `NotifyEntity`; implements `async_send_message(message, title=None)`.
 - `_attr_supported_features = NotifyEntityFeature.TITLE` signals title support to HA.
-- The entity instance is stored in `entry.runtime_data` so the custom service handler in `__init__.py` can retrieve it without going through `hass.data`.
+- The entity instance is stored in `hass.data[DOMAIN]` keyed by `entry.entry_id` so the custom service handler in `__init__.py` can retrieve it.
 - MQTT is published via `await mqtt.async_publish(hass, topic, payload)`.
 
 ### YAML-legacy path (kept for backward compat)
