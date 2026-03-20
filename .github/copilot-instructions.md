@@ -49,7 +49,7 @@ configuration.yaml: notify: platform: notify_mqtt
 ### Config-entry path (new)
 - `MqttNotifyEntity` inherits from `NotifyEntity`; implements `async_send_message(message, title=None)`.
 - `_attr_supported_features = NotifyEntityFeature.TITLE` signals title support to HA.
-- The entity instance is stored in `entry.runtime_data` so the custom service handler in `__init__.py` can retrieve it without going through `hass.data`.
+- The entity instance is stored in `hass.data[DOMAIN]` keyed by `entry.entry_id` so the custom service handler in `__init__.py` can retrieve it.
 - MQTT is published via `await mqtt.async_publish(hass, topic, payload)`.
 
 ### YAML-legacy path (kept for backward compat)
