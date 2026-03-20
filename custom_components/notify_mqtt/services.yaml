@@ -1,17 +1,41 @@
 # Describes the format for available notification services
 
 notify_mqtt:
-  description: Send a notification via MQTT. Fields are converted into matching fields in a JSON object sent as a string to the configured topic.
+  description: >
+    Send a notification via MQTT with full payload control.
+    All fields are serialized into a JSON object published to the
+    topic configured for the given notify entity. Unlike the standard
+    notify.send_message service, this service supports an arbitrary
+    data dictionary whose keys are merged at the top level of the
+    published JSON — matching the behaviour of the legacy YAML platform.
   fields:
+    entity_id:
+      description: The notify_mqtt entity to publish through.
+      example: notify.mqtt_notifications
+      required: true
+      selector:
+        entity:
+          integration: notify_mqtt
     message:
       description: Message body of the notification.
       example: The garage door has been open for 10 minutes.
+      required: true
+      selector:
+        text:
     title:
       description: Optional title for your notification.
-      example: 'Your Garage Door Friend'
-    target:
-      description: An array of targets to send the notification to. Optional depending on the platform.
-      example: platform specific
+      example: Your Garage Door Friend
+      selector:
+        text:
     data:
-      description: Extended information for notification. Optional depending on the platform.
-      example: platform specific
+      description: >
+        Optional dictionary of extra keys to merge into the top-level
+        JSON payload. Use this to pass routing hints, severity levels,
+        icons, or any metadata consumed by your MQTT subscribers
+        (e.g. Node-RED flows).
+      example:
+        severity: high
+        room: kitchen
+        icon: mdi:garage
+      selector:
+        object:
