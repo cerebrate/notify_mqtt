@@ -15,7 +15,7 @@
       }
     },
     "error": {
-      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or *).",
+      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or +).",
       "already_configured": "This MQTT topic is already configured."
     },
     "abort": {
@@ -37,7 +37,8 @@
       }
     },
     "error": {
-      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or *)."
+      "invalid_topic": "Invalid MQTT topic. Topics must not be empty and must not contain wildcard characters (# or +).",
+      "already_configured": "This MQTT topic is already configured."
     }
   }
 }
